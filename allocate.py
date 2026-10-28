@@ -5,7 +5,7 @@ Capacitated candidate -> role allocation.
 
 * The matching engine (greedy + Hopcroft-Karp) is written by hand with only the
   standard library.  numpy/scipy are used ONLY for the ILP benchmark and
-  networkx ONLY for drawing and for validating the answer with an independent
+  networkx ONLY for validating the answer with an independent
   max-flow solver.
 
 Model
@@ -30,8 +30,12 @@ from collections import deque
 INF = float("inf")
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-SKILLS = ["python", "sql", "ml", "stats", "cloud", "security", "java", "web",
-          "devops", "nlp", "vision", "math"]
+SKILLS = ["python", "sql", "ml", "stats", "cloud", "security", "java", "web", "devops", "nlp",
+          "vision", "math", "cpp", "rust", "go", "kotlin", "swift", "react", "node", "docker",
+          "kubernetes", "aws", "azure", "gcp", "linux", "networking", "cryptography", "forensics",
+          "pandas", "spark", "hadoop", "airflow", "tableau", "excel", "r", "matlab", "optimization",
+          "linear-algebra", "probability", "graph-theory", "databases", "nosql", "api-design",
+          "testing", "ci-cd", "embedded", "robotics", "bioinformatics", "finance", "operations"]
 
 
 # --------------------------------------------------------------------------
@@ -301,54 +305,48 @@ def demo_example():
         traces=describe_paths(r["log"], r["slot_role"], names_c, names_r))
 
 
-def draw_matching(path, n_cand, caps, eligible, res, title):
+def draw_paths(path, log, slot_role, caps, title, k=6):
+    """Readable picture of a large instance: draw the k longest vertex-disjoint augmenting
+    paths. Red = new assignment created by the path, blue dashed = the greedy choice it undid."""
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    import networkx as nx
-    slot_role = res["slot_role"]
-    final = {u: role_of(slot_role, res["ml"][u]) for u in range(n_cand)}
-    greedy_a = {u: role_of(slot_role, res["g_ml"][u]) for u in range(n_cand)}
-    G = nx.Graph()
-    L = [("c", u) for u in range(n_cand)]
-    R = [("r", j) for j in range(len(caps))]
-    G.add_nodes_from(L, bipartite=0)
-    G.add_nodes_from(R, bipartite=1)
-    pos = {}
-    for i, n in enumerate(L):
-        pos[n] = (0, -i)
-    scale = (n_cand - 1) / max(1, len(R) - 1)
-    for i, n in enumerate(R):
-        pos[n] = (3, -i * scale)
-    unmatched_e, kept_e, moved_e = [], [], []
-    for u in range(n_cand):
-        for j in eligible[u]:
-            e = (("c", u), ("r", j))
-            if final[u] == j:
-                (kept_e if greedy_a[u] == j else moved_e).append(e)
-            else:
-                unmatched_e.append(e)
-    fig, ax = plt.subplots(figsize=(11, max(8, n_cand * 0.28)))
-    nx.draw_networkx_edges(G, pos, edgelist=unmatched_e, edge_color="#cccccc", width=0.6, ax=ax)
-    nx.draw_networkx_edges(G, pos, edgelist=kept_e, edge_color="#2a9d4a", width=2.2, ax=ax)
-    nx.draw_networkx_edges(G, pos, edgelist=moved_e, edge_color="#e63946", width=3.0, ax=ax)
-    nx.draw_networkx_nodes(G, pos, nodelist=[n for n in L if final[n[1]] is not None],
-                           node_color="#2a9d4a", node_size=170, ax=ax)
-    nx.draw_networkx_nodes(G, pos, nodelist=[n for n in L if final[n[1]] is None],
-                           node_color="#999999", node_size=170, ax=ax)
-    nx.draw_networkx_nodes(G, pos, nodelist=R, node_color="#457b9d", node_size=1300, node_shape="s", ax=ax)
-    nx.draw_networkx_labels(G, pos, labels={n: f"c{n[1]}" for n in L}, font_size=6, font_color="white", ax=ax)
-    used = [0] * len(caps)
-    for u in range(n_cand):
-        if final[u] is not None:
-            used[final[u]] += 1
-    nx.draw_networkx_labels(G, pos, labels={("r", j): f"R{j}\n{used[j]}/{caps[j]}" for j in range(len(caps))},
-                            font_size=8, font_color="white", ax=ax)
-    ax.plot([], [], color="#2a9d4a", lw=2.2, label="matched (same as greedy)")
-    ax.plot([], [], color="#e63946", lw=3, label="matched after augmentation (greedy choice undone / new hire)")
-    ax.plot([], [], color="#cccccc", lw=1, label="eligible, not used")
-    ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.04), fontsize=8, ncol=1, frameon=False)
-    ax.set_title(title, fontsize=11)
+    steps = []
+    for p in log:
+        st = [(u, (slot_role[o] if o != -1 else None), slot_role[n]) for (u, o, n) in p]
+        st = [x for x in st if x[1] != x[2]]
+        steps.append(st)
+    order = sorted(range(len(steps)), key=lambda i: -len(steps[i]))
+    chosen, used_c = [], set()
+    for i in order:
+        if len(chosen) == k:
+            break
+        if not any(u in used_c for u, _, _ in steps[i]):
+            chosen.append(i)
+            used_c.update(u for u, _, _ in steps[i])
+    cand_nodes = [u for i in chosen for u, _, _ in steps[i]]
+    role_nodes = sorted({r for i in chosen for _, o, n in steps[i] for r in (o, n) if r is not None})
+    ypos = {u: -idx for idx, u in enumerate(cand_nodes)}
+    rscale = max(1, (len(cand_nodes) - 1)) / max(1, (len(role_nodes) - 1))
+    rpos = {r: -idx * rscale for idx, r in enumerate(role_nodes)}
+    fig, ax = plt.subplots(figsize=(10, max(6, len(cand_nodes) * 0.42)))
+    palette = ["#e63946", "#f4a261", "#8338ec", "#2a9d8f", "#d62828", "#fb5607"]
+    for ci, i in enumerate(chosen):
+        col = palette[ci % len(palette)]
+        for u, o, n in steps[i]:
+            if o is not None:
+                ax.plot([0, 3], [ypos[u], rpos[o]], color="#457b9d", ls="--", lw=1.2, alpha=0.8)
+            ax.plot([0, 3], [ypos[u], rpos[n]], color=col, lw=2.8)
+    for u in cand_nodes:
+        ax.scatter([0], [ypos[u]], s=260, color="#2a9d4a", zorder=3)
+        ax.text(0, ypos[u], f"c{u}", color="white", ha="center", va="center", fontsize=6, zorder=4)
+    for r in role_nodes:
+        ax.scatter([3], [rpos[r]], s=650, marker="s", color="#457b9d", zorder=3)
+        ax.text(3, rpos[r], f"R{r}\ncap {caps[r]}", color="white", ha="center", va="center", fontsize=5.5, zorder=4)
+    ax.plot([], [], color="#e63946", lw=2.8, label="assignment after augmentation (colour = one augmenting path)")
+    ax.plot([], [], color="#457b9d", ls="--", lw=1.2, label="greedy assignment that was undone")
+    ax.legend(loc="lower center", bbox_to_anchor=(0.5, -0.07), fontsize=8, frameon=False)
+    ax.set_title(title, fontsize=10)
     ax.axis("off")
     plt.tight_layout()
     plt.savefig(path, dpi=150)
@@ -356,17 +354,8 @@ def draw_matching(path, n_cand, caps, eligible, res, title):
 
 
 def main():
-    N, R = 40, 8
-    # ---- main instance: first seed whose greedy gap is non-trivial (documented) ----
-    seed = None
-    for s in range(1, 500):
-        cands, roles, caps, eligible = make_instance(N, R, s)
-        adj, sr = build_slots(N, caps, eligible)
-        gml, _ = greedy(adj, len(sr))
-        ml, _, _ = hopcroft_karp(adj, len(sr))
-        if size(ml) - size(gml) >= 4:
-            seed = s
-            break
+    N, R = 2000, 320          # problem statement: |U| >= 2000 candidates, |V| >= 300 roles
+    seed = 1                  # fixed in advance, not selected for its gap
     cands, roles, caps, eligible = make_instance(N, R, seed)
     res = solve_instance(N, caps, eligible)
     slot_role = res["slot_role"]
@@ -395,9 +384,17 @@ def main():
             w.writerow([names_r[j], "|".join(SKILLS[k] for k in sorted(roles[j])), caps[j], fg, ff])
 
     traces = describe_paths(res["log"], slot_role, names_c, names_r)
-    draw_matching(os.path.join(HERE, "matching_vis.png"), N, caps, eligible, res,
-                  f"Maximum matching: {res['hk_size']} hires (greedy: {res['greedy_size']}, "
-                  f"gap = {res['hk_size'] - res['greedy_size']})")
+    with open(os.path.join(HERE, "path_traces.txt"), "w") as f:
+        f.write("\n".join(traces) + "\n")
+    changes = [t.split("(+1 hire, ")[1].split(" role")[0] for t in traces]
+    changes = [int(x) for x in changes]
+    top = sorted(range(len(traces)), key=lambda i: -changes[i])[:8]
+    traces_top = [traces[i] for i in top]
+    roles_full = sum(1 for j in range(R)
+                     if sum(1 for u in range(N) if role_of(slot_role, res["ml"][u]) == j) == caps[j])
+    draw_paths(os.path.join(HERE, "matching_vis.png"), res["log"], slot_role, caps,
+               f"{N} candidates, {R} roles: the 6 longest augmenting paths "
+               f"(greedy {res['greedy_size']} hires -> optimum {res['hk_size']}, gap {res['hk_size'] - res['greedy_size']})")
 
     demo = demo_example()
 
@@ -455,7 +452,9 @@ def main():
                   gap=res["hk_size"] - res["greedy_size"], phases=res["phases"],
                   augmenting_paths=len(res["log"]), t_hk=res["t_hk"], t_ilp=res["t_ilp"],
                   cover_size=len(cl) + len(cr), cover_left=len(cl), cover_right=len(cr),
-                  unassigned=N - res["hk_size"], traces=traces),
+                  unassigned=N - res["hk_size"], traces_top=traces_top, paths_total=len(traces),
+                  mean_role_changes=sum(changes) / max(1, len(changes)), max_role_changes=max(changes),
+                  roles_full=roles_full),
         demo=demo, benchmark=bench, scaling=scaling)
     with open(os.path.join(HERE, "results.json"), "w") as f:
         json.dump(results, f, indent=2)
