@@ -13,7 +13,7 @@ Capacitated candidate-to-role allocation (2,000 candidates, 320 roles) with a ha
 | `presentation.pdf` / `report.md` | Proofs (Berge, König), complexity, traces, benchmarks |
 | `results.json` | Raw numbers behind the report |
 | `match_csv.py` | Run the engine on your own files: `python match_csv.py candidates.csv roles.csv` |
-| `sample_input/` | Example `candidates.csv` and `roles.csv` showing the input format |
+| `sample/` | Example `candidates.csv` and `roles.csv` showing the input format |
 | `make_report.py` | Rebuilds `report.md` and `presentation.pdf` from `results.json` |
 
 ## Run
