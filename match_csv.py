@@ -18,6 +18,7 @@ import re
 import sys
 import time
 
+from merit import explain, merit_assign
 from allocate import (build_slots, flow_check, greedy, hopcroft_karp, ilp_max,
                       konig_certificate, role_of, size)
 
@@ -61,7 +62,9 @@ def main():
     elif "skills" in C[0] and "required_skills" in Rr[0]:
         cs = [set(split(r["skills"])) for r in C]
         rs = [set(split(r["required_skills"])) for r in Rr]
-        eligible = [[j for j in range(len(Rr)) if len(cs[u] & rs[j]) >= min(a.min_overlap, max(1, len(rs[j])))]
+        ms = [set(split(r.get("mandatory_skills", ""))) for r in Rr]
+        eligible = [[j for j in range(len(Rr)) if ms[j] <= cs[u]
+                     and len(cs[u] & rs[j]) >= min(a.min_overlap, max(1, len(rs[j])))]
                     for u in range(len(C))]
     else:
         sys.exit("candidates need 'eligible_roles' OR ('skills' with roles having 'required_skills')")
@@ -75,17 +78,52 @@ def main():
     dt = time.perf_counter() - t0
     cl, cr, covers, free = konig_certificate(adj, ml, mr)
 
+    skill_mode = "skills" in C[0] and "required_skills" in Rr[0] and "eligible_roles" not in C[0]
+    if skill_mode:
+        fit = {(u, j): len(cs[u] & rs[j]) for u in range(n) for j in eligible[u]}
+    else:
+        fit = {(u, j): 1 for u in range(n) for j in eligible[u]}
+    mrole, mfit = merit_assign(n, caps, eligible, fit, names_c)
+    assert sum(1 for x in mrole if x != -1) == size(ml), "merit assignment lost cardinality"
     with open(a.out, "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["candidate", "assigned_role", "greedy_role", "changed_by_augmentation"])
+        w.writerow(["candidate", "assigned_role", "fit", "explanation", "greedy_role",
+                    "hk_role", "changed_by_augmentation"])
         for u in range(n):
-            x, g = role_of(slot_role, ml[u]), role_of(slot_role, gml[u])
-            w.writerow([names_c[u], names_r[x] if x is not None else "UNASSIGNED",
-                        names_r[g] if g is not None else "UNASSIGNED", "yes" if x != g else "no"])
+            x = mrole[u] if mrole[u] != -1 else None
+            h, g = role_of(slot_role, ml[u]), role_of(slot_role, gml[u])
+            if skill_mode and not cs[u]:
+                ex = "MISSING INFORMATION: no skills listed for this candidate (not evaluated, not a skill gap)"
+            elif x is not None and skill_mode:
+                ex = explain(u, x, cs[u], rs[x])
+                alts = sorted(((fit[(u, j)], names_r[j]) for j in eligible[u] if j != x), reverse=True)
+                if alts:
+                    best = alts[0]
+                    if best[0] > fit[(u, x)]:
+                        ex += f"; better-fit role {best[1]} ({best[0]}) was full - seat given to maximise total hires"
+                    elif best[0] == fit[(u, x)]:
+                        ex += f"; TIE with {best[1]} (same fit {best[0]}): resolved by capacity, then name hash"
+                    else:
+                        ex += f"; next best {best[1]} (fit {best[0]})"
+            elif x is not None:
+                ex = "listed as eligible"
+            elif eligible[u]:
+                ex = "no seat: all eligible roles are full; total fit/hires is maximal without this candidate"
+            elif skill_mode:
+                blk = sorted({names_r[j] + " needs " + "|".join(sorted(ms[j] - cs[u]))
+                              for j in range(len(Rr)) if ms[j] - cs[u]})[:3]
+                ex = "not eligible: " + ("missing mandatory skill(s): " + "; ".join(blk) if blk
+                                         else f"fewer than {a.min_overlap} required skills for every role")
+            else:
+                ex = "not eligible for any role"
+            nm = lambda k: names_r[k] if k is not None else "UNASSIGNED"
+            w.writerow([names_c[u], nm(x), fit[(u, x)] if x is not None else "", ex, nm(g), nm(h),
+                        "yes" if h != g else "no"])
 
     print(f"candidates={n}  roles={len(Rr)}  total capacity={sum(caps)}  eligibility edges={sum(map(len, eligible))}")
     print(f"greedy hires      : {size(gml)}")
     print(f"optimal hires (HK): {size(ml)}   [{dt * 1000:.1f} ms]")
+    print(f"total skill fit of assignment: {mfit} (max-cardinality, max-fit)")
     print(f"Greedy Capacity Gap: {size(ml) - size(gml)}")
     ok_cert = covers and not free and len(cl) + len(cr) == size(ml)
     print(f"optimality certificate (vertex cover = matching size): {'OK' if ok_cert else 'FAILED'}")
