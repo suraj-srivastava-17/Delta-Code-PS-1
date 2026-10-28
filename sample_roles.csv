@@ -1,0 +1,5 @@
+role,capacity,required_skills
+Data Analyst,2,python|sql|stats
+ML Engineer,2,ml|python|nlp
+Cloud Engineer,1,cloud|devops|security
+Backend Dev,2,python|sql|cloud
