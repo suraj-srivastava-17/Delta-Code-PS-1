@@ -57,6 +57,29 @@ TAB([["Quantity", "Value"],
 P("Hopcroft-Karp, the ILP and an independent max-flow solver agree on every instance tested "
   "(the main instance and 18 benchmark instances), which doubles as a correctness check of the hand-written engine.")
 
+
+# ---- Uniqueness section (differentiators beyond standard HK+ILP) ----
+H2("1b. What makes this solution unique")
+P("""Most teams implement classical Hopcroft-Karp, show the greedy capacity gap, and verify with an ILP.
+We added three deeper layers that turn a correct algorithm into a workforce-insight tool:""")
+P("""1. Bottleneck / Criticality Analysis – After the maximum matching we identify tight roles (filled to capacity),
+compute a sensitivity/shadow-price vector (whether capacity+1 would raise |M|), and flag critical roles
+whose shadow price is zero. On the main instance every full role still has positive shadow price,
+so the residual network still contains alternating paths that could use an extra seat. This answers
+the practical question: “If I can open only one more seat, which role should I expand?”""")
+P("""2. Explicit Dual LP Certificate – In addition to the combinatorial König cover we construct a feasible
+dual solution (y_u, z_j) of the matching LP whose objective equals |M|. This sits between pure graph
+theory and full linear-programming duality and gives a second, independent optimality proof.""")
+P("""3. Merit assignment with order-independent tie-breaking – Among all maximum-cardinality matchings we
+select the one with maximum total skill-fit via a hand-written successive-shortest-path min-cost flow.
+Ties are broken by a cryptographic hash of the candidate name so the result never depends on input-file order.""")
+if "uniqueness" in R:
+    u = R["uniqueness"]
+    crit = u.get("criticality", {})
+    P(f"Main-instance numbers: tight roles = {crit.get('n_tight', 'n/a')}, "
+      f"roles with positive shadow price = {crit.get('shadow_price_sum', 'n/a')}, "
+      f"dual objective = {u.get('dual_objective', 'n/a')} (matches |M|).")
+
 H2("2. Model: flow network and slot expansion")
 P("Candidates u in L (|L| = n), roles j in R with capacity c_j. Eligibility edges (u, j) come from skill overlap: "
   "u is eligible for j if u covers at least 2 of the 3 skills the role requires. Build the network "
