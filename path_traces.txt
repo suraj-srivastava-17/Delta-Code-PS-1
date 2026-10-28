@@ -1,0 +1,160 @@
+path 1 (+1 hire, 3 role change(s)): c132: unmatched -> R33;  c3: R33 -> R148;  c430: R148 -> R228
+path 2 (+1 hire, 3 role change(s)): c315: unmatched -> R15;  c177: R15 -> R31;  c428: R31 -> R246
+path 3 (+1 hire, 3 role change(s)): c565: unmatched -> R11;  c68: R11 -> R273;  c1591: R273 -> R299
+path 4 (+1 hire, 3 role change(s)): c566: unmatched -> R83;  c338: R83 -> R159;  c736: R159 -> R245
+path 5 (+1 hire, 3 role change(s)): c601: unmatched -> R169;  c594: R169 -> R223;  c1183: R223 -> R318
+path 6 (+1 hire, 3 role change(s)): c610: unmatched -> R36;  c90: R36 -> R114;  c146: R114 -> R231
+path 7 (+1 hire, 3 role change(s)): c642: unmatched -> R33;  c10: R33 -> R148;  c680: R148 -> R287
+path 8 (+1 hire, 3 role change(s)): c647: unmatched -> R41;  c72: R41 -> R211;  c1724: R211 -> R249
+path 9 (+1 hire, 2 role change(s)): c651: unmatched -> R4;  c117: R4 -> R308
+path 10 (+1 hire, 3 role change(s)): c654: unmatched -> R18;  c96: R18 -> R201;  c1386: R201 -> R300
+path 11 (+1 hire, 3 role change(s)): c656: unmatched -> R56;  c15: R56 -> R99;  c822: R99 -> R172
+path 12 (+1 hire, 3 role change(s)): c659: unmatched -> R11;  c169: R11 -> R168;  c1533: R168 -> R272
+path 13 (+1 hire, 2 role change(s)): c673: unmatched -> R102;  c396: R102 -> R295
+path 14 (+1 hire, 3 role change(s)): c684: unmatched -> R67;  c188: R67 -> R213;  c958: R213 -> R294
+path 15 (+1 hire, 3 role change(s)): c769: unmatched -> R24;  c67: R24 -> R104;  c839: R104 -> R244
+path 16 (+1 hire, 2 role change(s)): c788: unmatched -> R124;  c73: R124 -> R222
+path 17 (+1 hire, 3 role change(s)): c900: unmatched -> R36;  c129: R36 -> R267;  c1602: R267 -> R299
+path 18 (+1 hire, 3 role change(s)): c944: unmatched -> R82;  c541: R82 -> R118;  c401: R118 -> R295
+path 19 (+1 hire, 2 role change(s)): c946: unmatched -> R56;  c47: R56 -> R289
+path 20 (+1 hire, 2 role change(s)): c949: unmatched -> R82;  c612: R82 -> R292
+path 21 (+1 hire, 3 role change(s)): c990: unmatched -> R35;  c162: R35 -> R243;  c1837: R243 -> R248
+path 22 (+1 hire, 2 role change(s)): c997: unmatched -> R8;  c22: R8 -> R232
+path 23 (+1 hire, 3 role change(s)): c1001: unmatched -> R7;  c19: R7 -> R139;  c454: R139 -> R294
+path 24 (+1 hire, 2 role change(s)): c1024: unmatched -> R39;  c34: R39 -> R231
+path 25 (+1 hire, 3 role change(s)): c1055: unmatched -> R22;  c23: R22 -> R49;  c182: R49 -> R225
+path 26 (+1 hire, 3 role change(s)): c1061: unmatched -> R3;  c20: R3 -> R146;  c986: R146 -> R224
+path 27 (+1 hire, 3 role change(s)): c1082: unmatched -> R9;  c213: R9 -> R104;  c1273: R104 -> R244
+path 28 (+1 hire, 2 role change(s)): c1088: unmatched -> R55;  c113: R55 -> R289
+path 29 (+1 hire, 2 role change(s)): c1103: unmatched -> R75;  c123: R75 -> R249
+path 30 (+1 hire, 2 role change(s)): c1111: unmatched -> R27;  c32: R27 -> R264
+path 31 (+1 hire, 3 role change(s)): c1135: unmatched -> R27;  c69: R27 -> R130;  c85: R130 -> R265
+path 32 (+1 hire, 3 role change(s)): c1163: unmatched -> R126;  c705: R126 -> R210;  c1379: R210 -> R290
+path 33 (+1 hire, 3 role change(s)): c1166: unmatched -> R12;  c56: R12 -> R31;  c723: R31 -> R246
+path 34 (+1 hire, 2 role change(s)): c1189: unmatched -> R147;  c390: R147 -> R303
+path 35 (+1 hire, 2 role change(s)): c1191: unmatched -> R212;  c614: R212 -> R292
+path 36 (+1 hire, 2 role change(s)): c1217: unmatched -> R79;  c299: R79 -> R221
+path 37 (+1 hire, 2 role change(s)): c1220: unmatched -> R166;  c41: R166 -> R226
+path 38 (+1 hire, 3 role change(s)): c1227: unmatched -> R58;  c363: R58 -> R171;  c862: R171 -> R217
+path 39 (+1 hire, 2 role change(s)): c1236: unmatched -> R69;  c786: R69 -> R256
+path 40 (+1 hire, 2 role change(s)): c1246: unmatched -> R26;  c230: R26 -> R246
+path 41 (+1 hire, 2 role change(s)): c1252: unmatched -> R68;  c871: R68 -> R270
+path 42 (+1 hire, 3 role change(s)): c1254: unmatched -> R50;  c26: R50 -> R273;  c1918: R273 -> R278
+path 43 (+1 hire, 2 role change(s)): c1286: unmatched -> R124;  c547: R124 -> R226
+path 44 (+1 hire, 2 role change(s)): c1288: unmatched -> R90;  c1004: R90 -> R221
+path 45 (+1 hire, 3 role change(s)): c1295: unmatched -> R69;  c846: R69 -> R99;  c872: R99 -> R172
+path 46 (+1 hire, 3 role change(s)): c1299: unmatched -> R73;  c17: R73 -> R248;  c1164: R248 -> R308
+path 47 (+1 hire, 2 role change(s)): c1312: unmatched -> R101;  c248: R101 -> R295
+path 48 (+1 hire, 2 role change(s)): c1315: unmatched -> R75;  c834: R75 -> R275
+path 49 (+1 hire, 2 role change(s)): c1317: unmatched -> R138;  c756: R138 -> R285
+path 50 (+1 hire, 3 role change(s)): c1327: unmatched -> R28;  c244: R28 -> R154;  c953: R154 -> R246
+path 51 (+1 hire, 2 role change(s)): c1329: unmatched -> R7;  c183: R7 -> R275
+path 52 (+1 hire, 3 role change(s)): c1341: unmatched -> R39;  c55: R39 -> R262;  c1267: R262 -> R304
+path 53 (+1 hire, 3 role change(s)): c1353: unmatched -> R35;  c199: R35 -> R183;  c854: R183 -> R287
+path 54 (+1 hire, 3 role change(s)): c1358: unmatched -> R11;  c190: R11 -> R31;  c763: R31 -> R295
+path 55 (+1 hire, 2 role change(s)): c1387: unmatched -> R52;  c473: R52 -> R228
+path 56 (+1 hire, 3 role change(s)): c1391: unmatched -> R9;  c450: R9 -> R201;  c1649: R201 -> R232
+path 57 (+1 hire, 3 role change(s)): c1401: unmatched -> R166;  c394: R166 -> R226;  c1606: R226 -> R315
+path 58 (+1 hire, 3 role change(s)): c1407: unmatched -> R86;  c581: R86 -> R133;  c88: R133 -> R279
+path 59 (+1 hire, 3 role change(s)): c1409: unmatched -> R18;  c124: R18 -> R228;  c1956: R228 -> R266
+path 60 (+1 hire, 2 role change(s)): c1427: unmatched -> R117;  c902: R117 -> R300
+path 61 (+1 hire, 3 role change(s)): c1433: unmatched -> R42;  c158: R42 -> R210;  c1571: R210 -> R290
+path 62 (+1 hire, 2 role change(s)): c1442: unmatched -> R100;  c976: R100 -> R284
+path 63 (+1 hire, 2 role change(s)): c1449: unmatched -> R19;  c172: R19 -> R300
+path 64 (+1 hire, 3 role change(s)): c1451: unmatched -> R75;  c848: R75 -> R304;  c1326: R304 -> R318
+path 65 (+1 hire, 2 role change(s)): c1452: unmatched -> R7;  c383: R7 -> R271
+path 66 (+1 hire, 2 role change(s)): c1459: unmatched -> R283;  c818: R283 -> R284
+path 67 (+1 hire, 2 role change(s)): c1463: unmatched -> R95;  c104: R95 -> R263
+path 68 (+1 hire, 2 role change(s)): c1491: unmatched -> R106;  c914: R106 -> R232
+path 69 (+1 hire, 2 role change(s)): c1492: unmatched -> R161;  c928: R161 -> R265
+path 70 (+1 hire, 3 role change(s)): c1496: unmatched -> R28;  c270: R28 -> R154;  c1067: R154 -> R231
+path 71 (+1 hire, 2 role change(s)): c1497: unmatched -> R198;  c255: R198 -> R279
+path 72 (+1 hire, 2 role change(s)): c1502: unmatched -> R136;  c874: R136 -> R232
+path 73 (+1 hire, 2 role change(s)): c1504: unmatched -> R3;  c164: R3 -> R292
+path 74 (+1 hire, 3 role change(s)): c1507: unmatched -> R125;  c29: R125 -> R159;  c1271: R159 -> R309
+path 75 (+1 hire, 3 role change(s)): c1513: unmatched -> R151;  c1113: R151 -> R16;  c344: R16 -> R295
+path 76 (+1 hire, 3 role change(s)): c1515: unmatched -> R23;  c259: R23 -> R114;  c932: R114 -> R314
+path 77 (+1 hire, 2 role change(s)): c1517: unmatched -> R2;  c111: R2 -> R221
+path 78 (+1 hire, 2 role change(s)): c1522: unmatched -> R86;  c753: R86 -> R249
+path 79 (+1 hire, 3 role change(s)): c1526: unmatched -> R21;  c549: R21 -> R49;  c460: R49 -> R257
+path 80 (+1 hire, 3 role change(s)): c1528: unmatched -> R206;  c575: R206 -> R224;  c1600: R224 -> R234
+path 81 (+1 hire, 3 role change(s)): c1534: unmatched -> R5;  c411: R5 -> R0;  c51: R0 -> R221
+path 82 (+1 hire, 2 role change(s)): c1536: unmatched -> R19;  c316: R19 -> R308
+path 83 (+1 hire, 2 role change(s)): c1540: unmatched -> R52;  c616: R52 -> R284
+path 84 (+1 hire, 3 role change(s)): c1551: unmatched -> R259;  c1385: R259 -> R17;  c408: R17 -> R303
+path 85 (+1 hire, 3 role change(s)): c1555: unmatched -> R125;  c520: R125 -> R171;  c1340: R171 -> R301
+path 86 (+1 hire, 3 role change(s)): c1564: unmatched -> R20;  c112: R20 -> R49;  c574: R49 -> R271
+path 87 (+1 hire, 2 role change(s)): c1566: unmatched -> R10;  c16: R10 -> R265
+path 88 (+1 hire, 3 role change(s)): c1574: unmatched -> R24;  c285: R24 -> R127;  c1102: R127 -> R266
+path 89 (+1 hire, 3 role change(s)): c1579: unmatched -> R10;  c40: R10 -> R17;  c816: R17 -> R263
+path 90 (+1 hire, 3 role change(s)): c1595: unmatched -> R30;  c356: R30 -> R224;  c1833: R224 -> R288
+path 91 (+1 hire, 2 role change(s)): c1607: unmatched -> R239;  c878: R239 -> R264
+path 92 (+1 hire, 3 role change(s)): c1608: unmatched -> R27;  c300: R27 -> R103;  c433: R103 -> R279
+path 93 (+1 hire, 3 role change(s)): c1609: unmatched -> R37;  c134: R37 -> R104;  c1403: R104 -> R287
+path 94 (+1 hire, 3 role change(s)): c1618: unmatched -> R110;  c189: R110 -> R278;  c1918: R278 -> R293
+path 95 (+1 hire, 2 role change(s)): c1620: unmatched -> R155;  c709: R155 -> R270
+path 96 (+1 hire, 2 role change(s)): c1622: unmatched -> R37;  c388: R37 -> R217
+path 97 (+1 hire, 2 role change(s)): c1623: unmatched -> R176;  c888: R176 -> R216
+path 98 (+1 hire, 3 role change(s)): c1628: unmatched -> R197;  c1112: R197 -> R213;  c1311: R213 -> R301
+path 99 (+1 hire, 2 role change(s)): c1629: unmatched -> R10;  c60: R10 -> R265
+path 100 (+1 hire, 3 role change(s)): c1630: unmatched -> R57;  c115: R57 -> R78;  c38: R78 -> R234
+path 101 (+1 hire, 2 role change(s)): c1631: unmatched -> R19;  c367: R19 -> R284
+path 102 (+1 hire, 3 role change(s)): c1633: unmatched -> R161;  c1093: R161 -> R245;  c1458: R245 -> R292
+path 103 (+1 hire, 3 role change(s)): c1635: unmatched -> R32;  c27: R32 -> R99;  c1149: R99 -> R249
+path 104 (+1 hire, 3 role change(s)): c1642: unmatched -> R66;  c130: R66 -> R231;  c1881: R231 -> R270
+path 105 (+1 hire, 2 role change(s)): c1647: unmatched -> R69;  c935: R69 -> R285
+path 106 (+1 hire, 3 role change(s)): c1651: unmatched -> R92;  c1056: R92 -> R245;  c736: R245 -> R292
+path 107 (+1 hire, 3 role change(s)): c1662: unmatched -> R10;  c109: R10 -> R272;  c1533: R272 -> R318
+path 108 (+1 hire, 3 role change(s)): c1670: unmatched -> R152;  c1414: R152 -> R49;  c598: R49 -> R257
+path 109 (+1 hire, 2 role change(s)): c1675: unmatched -> R28;  c415: R28 -> R265
+path 110 (+1 hire, 3 role change(s)): c1682: unmatched -> R164;  c735: R164 -> R200;  c1151: R200 -> R264
+path 111 (+1 hire, 3 role change(s)): c1684: unmatched -> R71;  c720: R71 -> R244;  c839: R244 -> R292
+path 112 (+1 hire, 3 role change(s)): c1686: unmatched -> R199;  c694: R199 -> R200;  c1348: R200 -> R317
+path 113 (+1 hire, 3 role change(s)): c1689: unmatched -> R54;  c345: R54 -> R99;  c1594: R99 -> R217
+path 114 (+1 hire, 3 role change(s)): c1696: unmatched -> R34;  c84: R34 -> R146;  c1050: R146 -> R287
+path 115 (+1 hire, 3 role change(s)): c1697: unmatched -> R64;  c782: R64 -> R139;  c695: R139 -> R232
+path 116 (+1 hire, 2 role change(s)): c1701: unmatched -> R178;  c1: R178 -> R263
+path 117 (+1 hire, 3 role change(s)): c1718: unmatched -> R47;  c378: R47 -> R218;  c1653: R218 -> R240
+path 118 (+1 hire, 3 role change(s)): c1723: unmatched -> R22;  c121: R22 -> R154;  c1239: R154 -> R313
+path 119 (+1 hire, 3 role change(s)): c1740: unmatched -> R18;  c364: R18 -> R118;  c714: R118 -> R293
+path 120 (+1 hire, 2 role change(s)): c1743: unmatched -> R14;  c14: R14 -> R290
+path 121 (+1 hire, 2 role change(s)): c1744: unmatched -> R186;  c1261: R186 -> R290
+path 122 (+1 hire, 2 role change(s)): c1746: unmatched -> R23;  c331: R23 -> R271
+path 123 (+1 hire, 2 role change(s)): c1748: unmatched -> R107;  c167: R107 -> R240
+path 124 (+1 hire, 3 role change(s)): c1755: unmatched -> R32;  c206: R32 -> R170;  c922: R170 -> R292
+path 125 (+1 hire, 2 role change(s)): c1756: unmatched -> R47;  c634: R47 -> R288
+path 126 (+1 hire, 3 role change(s)): c1763: unmatched -> R1;  c154: R1 -> R16;  c368: R16 -> R290
+path 127 (+1 hire, 3 role change(s)): c1767: unmatched -> R20;  c240: R20 -> R287;  c1050: R287 -> R313
+path 128 (+1 hire, 3 role change(s)): c1777: unmatched -> R167;  c850: R167 -> R217;  c1840: R217 -> R318
+path 129 (+1 hire, 3 role change(s)): c1781: unmatched -> R247;  c1158: R247 -> R270;  c1881: R270 -> R290
+path 130 (+1 hire, 3 role change(s)): c1782: unmatched -> R58;  c375: R58 -> R171;  c1617: R171 -> R289
+path 131 (+1 hire, 2 role change(s)): c1785: unmatched -> R53;  c427: R53 -> R256
+path 132 (+1 hire, 2 role change(s)): c1790: unmatched -> R93;  c238: R93 -> R313
+path 133 (+1 hire, 2 role change(s)): c1792: unmatched -> R110;  c679: R110 -> R293
+path 134 (+1 hire, 2 role change(s)): c1799: unmatched -> R141;  c303: R141 -> R256
+path 135 (+1 hire, 3 role change(s)): c1808: unmatched -> R115;  c284: R115 -> R225;  c182: R225 -> R240
+path 136 (+1 hire, 3 role change(s)): c1809: unmatched -> R22;  c126: R22 -> R49;  c661: R49 -> R257
+path 137 (+1 hire, 2 role change(s)): c1810: unmatched -> R151;  c1190: R151 -> R264
+path 138 (+1 hire, 2 role change(s)): c1811: unmatched -> R54;  c387: R54 -> R232
+path 139 (+1 hire, 3 role change(s)): c1813: unmatched -> R136;  c884: R136 -> R232;  c695: R232 -> R293
+path 140 (+1 hire, 3 role change(s)): c1816: unmatched -> R137;  c1352: R137 -> R207;  c1715: R207 -> R257
+path 141 (+1 hire, 3 role change(s)): c1817: unmatched -> R20;  c587: R20 -> R171;  c1891: R171 -> R289
+path 142 (+1 hire, 3 role change(s)): c1822: unmatched -> R181;  c611: R181 -> R222;  c1776: R222 -> R279
+path 143 (+1 hire, 3 role change(s)): c1824: unmatched -> R86;  c968: R86 -> R217;  c862: R217 -> R289
+path 144 (+1 hire, 3 role change(s)): c1826: unmatched -> R181;  c1406: R181 -> R103;  c833: R103 -> R264
+path 145 (+1 hire, 2 role change(s)): c1829: unmatched -> R64;  c943: R64 -> R263
+path 146 (+1 hire, 3 role change(s)): c1848: unmatched -> R46;  c336: R46 -> R133;  c323: R133 -> R279
+path 147 (+1 hire, 3 role change(s)): c1850: unmatched -> R164;  c880: R164 -> R205;  c1281: R205 -> R266
+path 148 (+1 hire, 2 role change(s)): c1851: unmatched -> R1;  c260: R1 -> R293
+path 149 (+1 hire, 3 role change(s)): c1858: unmatched -> R95;  c1087: R95 -> R257;  c661: R257 -> R293
+path 150 (+1 hire, 2 role change(s)): c1862: unmatched -> R93;  c286: R93 -> R264
+path 151 (+1 hire, 2 role change(s)): c1863: unmatched -> R48;  c28: R48 -> R285
+path 152 (+1 hire, 3 role change(s)): c1864: unmatched -> R50;  c817: R50 -> R256;  c1436: R256 -> R263
+path 153 (+1 hire, 2 role change(s)): c1869: unmatched -> R6;  c355: R6 -> R289
+path 154 (+1 hire, 3 role change(s)): c1876: unmatched -> R38;  c416: R38 -> R264;  c1151: R264 -> R303
+path 155 (+1 hire, 3 role change(s)): c1886: unmatched -> R9;  c475: R9 -> R207;  c1889: R207 -> R285
+path 156 (+1 hire, 2 role change(s)): c1896: unmatched -> R15;  c222: R15 -> R285
+path 157 (+1 hire, 3 role change(s)): c1909: unmatched -> R50;  c858: R50 -> R228;  c898: R228 -> R303
+path 158 (+1 hire, 2 role change(s)): c1920: unmatched -> R219;  c895: R219 -> R303
+path 159 (+1 hire, 2 role change(s)): c1924: unmatched -> R165;  c49: R165 -> R285
+path 160 (+1 hire, 2 role change(s)): c1925: unmatched -> R98;  c231: R98 -> R285
