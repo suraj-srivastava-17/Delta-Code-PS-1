@@ -94,18 +94,18 @@ Instances: n candidates, n/8 roles, each candidate eligible for 1 to 6 roles dra
 
 | n | greedy | optimum (HK = ILP) | gap | gap % | HK time (s) | ILP time (s) | ILP / HK |
 |---|---|---|---|---|---|---|---|
-| 100 | 82.7 | 89.3 | 6.7 | 7.5% | 0.0007 | 0.0060 | 8.7x |
-| 200 | 157.3 | 181.3 | 24.0 | 13.2% | 0.0022 | 0.0127 | 5.8x |
-| 400 | 309.3 | 358.7 | 49.3 | 13.8% | 0.0049 | 0.0223 | 4.5x |
-| 800 | 610.0 | 719.7 | 109.7 | 15.2% | 0.0087 | 0.0394 | 4.5x |
-| 1600 | 1192.7 | 1433.0 | 240.3 | 16.8% | 0.0190 | 0.0865 | 4.6x |
-| 3200 | 2392.0 | 2853.3 | 461.3 | 16.2% | 0.0408 | 0.2542 | 6.2x |
+| 100 | 82.7 | 89.3 | 6.7 | 7.5% | 0.0008 | 0.0072 | 8.8x |
+| 200 | 157.3 | 181.3 | 24.0 | 13.2% | 0.0024 | 0.0167 | 7.1x |
+| 400 | 309.3 | 358.7 | 49.3 | 13.8% | 0.0057 | 0.0323 | 5.7x |
+| 800 | 610.0 | 719.7 | 109.7 | 15.2% | 0.0128 | 0.0554 | 4.3x |
+| 1600 | 1192.7 | 1433.0 | 240.3 | 16.8% | 0.0289 | 0.1239 | 4.3x |
+| 3200 | 2392.0 | 2853.3 | 461.3 | 16.2% | 0.0602 | 0.3862 | 6.4x |
 
 ![Left: runtime vs ILP. Middle: greedy vs optimal hires. Right: HK-only scaling against a c*E*sqrt(V) reference.](benchmark.png)
 
 *Left: runtime vs ILP. Middle: greedy vs optimal hires. Right: HK-only scaling against a c*E*sqrt(V) reference.*
 
-HK matched the ILP optimum on all 18 benchmark instances. The greedy gap ranges from 7.5% to 16.8% of the optimum and generally grows with instance size. Scaling run (HK only): n from 1000 to 64000 (64x) took the edge count from 26,131 to 1,597,031 (61x) and the time from 0.010s to 1.622s (157x), with only 3 to 5 phases. Runtime therefore grows roughly with E, slightly super-linearly, comfortably within the E*sqrt(V) bound; the sqrt(V) phase bound is a worst case that these instances do not approach.
+HK matched the ILP optimum on all 18 benchmark instances. The greedy gap ranges from 7.5% to 16.8% of the optimum and generally grows with instance size. Scaling run (HK only): n from 1000 to 64000 (64x) took the edge count from 26,131 to 1,597,031 (61x) and the time from 0.018s to 2.181s (120x), with only 3 to 5 phases. Runtime therefore grows roughly with E, slightly super-linearly, comfortably within the E*sqrt(V) bound; the sqrt(V) phase bound is a worst case that these instances do not approach.
 
 
 ## 9. Greedy Capacity Gap
