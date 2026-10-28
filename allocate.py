@@ -27,6 +27,8 @@ import random
 import time
 from collections import deque
 
+from merit import explain, merit_assign
+
 INF = float("inf")
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -366,15 +368,32 @@ def main():
 
     names_c = [f"c{u}" for u in range(N)]
     names_r = [f"R{j}" for j in range(R)]
+    fit = {(u, j): len(cands[u] & roles[j]) for u in range(N) for j in eligible[u]}
+    t0 = time.perf_counter()
+    mrole, mfit = merit_assign(N, caps, eligible, fit, names_c)
+    t_merit = time.perf_counter() - t0
+    assert sum(1 for x in mrole if x != -1) == res["hk_size"], "merit assignment lost cardinality"
+    hk_fit = sum(fit[(u, role_of(slot_role, res["ml"][u]))] for u in range(N) if res["ml"][u] != -1)
+    final = {u: (mrole[u] if mrole[u] != -1 else None) for u in range(N)}
     with open(os.path.join(HERE, "assignment.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["candidate", "skills", "assigned_role", "greedy_role", "changed_by_augmentation"])
+        w.writerow(["candidate", "skills", "assigned_role", "fit", "explanation", "greedy_role",
+                    "hk_role", "changed_by_augmentation"])
         for u in range(N):
-            a, g = role_of(slot_role, res["ml"][u]), role_of(slot_role, res["g_ml"][u])
+            a, g = final[u], role_of(slot_role, res["g_ml"][u])
+            h = role_of(slot_role, res["ml"][u])
+            if a is not None:
+                ex = explain(u, a, {SKILLS[k] for k in cands[u]}, {SKILLS[k] for k in roles[a]})
+            elif eligible[u]:
+                ex = "no seat: all eligible roles are full with equal-or-better-fit candidates"
+            else:
+                ex = "no seat: skills overlap no role enough to be eligible"
             w.writerow([names_c[u], "|".join(SKILLS[k] for k in sorted(cands[u])),
                         names_r[a] if a is not None else "UNASSIGNED",
+                        fit[(u, a)] if a is not None else "", ex,
                         names_r[g] if g is not None else "UNASSIGNED",
-                        "yes" if a != g else "no"])
+                        names_r[h] if h is not None else "UNASSIGNED",
+                        "yes" if h != g else "no"])
     with open(os.path.join(HERE, "role_summary.csv"), "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["role", "required_skills", "capacity", "filled_greedy", "filled_final"])
@@ -452,7 +471,7 @@ def main():
                   gap=res["hk_size"] - res["greedy_size"], phases=res["phases"],
                   augmenting_paths=len(res["log"]), t_hk=res["t_hk"], t_ilp=res["t_ilp"],
                   cover_size=len(cl) + len(cr), cover_left=len(cl), cover_right=len(cr),
-                  unassigned=N - res["hk_size"], traces_top=traces_top, paths_total=len(traces),
+                  unassigned=N - res["hk_size"], merit_total_fit=mfit, hk_total_fit=hk_fit, t_merit=t_merit, traces_top=traces_top, paths_total=len(traces),
                   mean_role_changes=sum(changes) / max(1, len(changes)), max_role_changes=max(changes),
                   roles_full=roles_full),
         demo=demo, benchmark=bench, scaling=scaling)
